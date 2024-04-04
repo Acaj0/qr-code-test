@@ -3,7 +3,7 @@
 export default function NavBar (){
     return(
         <div>
-            <h1>oi oi oi </h1>
+            <h1>teste de push </h1>
         </div>
        
     )
