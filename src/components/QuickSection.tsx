@@ -6,7 +6,7 @@ import Image from "next/image";
 export default function QuickSection() {
   const [link, setLink] = useState("");
 
-  function handleQrcode(e: any) {
+  function handleQrcode(e:any) {
     setLink(e.target.value);
   }
 
