@@ -8,7 +8,7 @@ export default function QuickSection() {
   const [link, setLink] = useState("");
   const [qrcodeLink, setQrcodeLink] = useState("")
 
-  function handleGenerate(link_url){
+  function handleGenerate(link_url:any){
     QRCodeLink.toDataURL(link_url,{
       width: 600,
       margin: 3,
