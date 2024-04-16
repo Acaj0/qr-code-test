@@ -1,13 +1,25 @@
 "use client";
 import { ChangeEvent, useState } from "react";
 import QRCode from "react-qr-code";
+import QRCodeLink from "qrcode"
 import Image from "next/image";
 
 export default function QuickSection() {
   const [link, setLink] = useState("");
+  const [qrcodeLink, setQrcodeLink] = useState("")
+
+  function handleGenerate(link_url){
+    QRCodeLink.toDataURL(link_url,{
+      width: 600,
+      margin: 3,
+    }, function (err, url){
+      setQrcodeLink(url);
+    })
+  }
 
   function handleQrcode(e:any) {
     setLink(e.target.value);
+    handleGenerate(e.target.value)
   }
 
   return (
@@ -31,6 +43,7 @@ export default function QuickSection() {
         value={link}
         onChange={(e) => handleQrcode(e)}
       />
+      <a href={qrcodeLink} download={'qrcode.png'} className="mt-4 underline bg-indigo-700/70 p-2 rounded-lg"> DOWNLOAD QR-CODE </a>
     </div>
   );
 }

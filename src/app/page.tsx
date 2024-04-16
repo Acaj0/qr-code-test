@@ -9,7 +9,7 @@ export default function Home() {
       <div className="flex bg-black/0 h-[600px] mt-40 text-white justify-center flex-row pb-10 px-40">
         <div className="bg-black/80 rounded-lg w-[1000px] grid grid-cols-2 divide-x">
           <div className="flex justify-center items-center"><QuickSection></QuickSection></div>
-          <div className="flex justify-center items-center">b</div>
+          <div className="flex justify-center items-center">TBD</div>
         </div>
       </div>
     </div>
