@@ -3,6 +3,12 @@ import React, { ChangeEvent, useState } from "react";
 import QRCode from "react-qr-code";
 import QRCodeLink from "qrcode";
 import Image from "next/image";
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@radix-ui/react-accordion";
 
 export default function QuickSection() {
   const [link, setLink] = useState("");
@@ -17,11 +23,11 @@ export default function QuickSection() {
     }
   };
 
-  const handleDelete= (link:any)=>{
-    const deleted = links.filter((t)=>t.id !== link.id)
-    setLinks(deleted)
-    localStorage.setItem("localLinks", JSON.stringify(deleted))
-  }
+  const handleDelete = (link: any) => {
+    const deleted = links.filter((t) => t.id !== link.id);
+    setLinks(deleted);
+    localStorage.setItem("localLinks", JSON.stringify(deleted));
+  };
 
   function handleGenerate(link_url: any) {
     QRCodeLink.toDataURL(
@@ -47,8 +53,7 @@ export default function QuickSection() {
         <div className="w-[270px]">
           <h1 className="text-3xl text-center">QUICK GENERATE</h1>
           <h1 className="text-center text-sm">
-            Here you can generate the quick way, you can download it but cant
-            save it.
+            Here you can generate the quick way, you can download and save it.
           </h1>
         </div>
         <a>
@@ -77,39 +82,60 @@ export default function QuickSection() {
             {" "}
             DOWNLOAD{" "}
           </a>
-          <button
+          <a
             onClick={saveQr}
-            className="mt-4 underline bg-red-500/70 p-2 rounded-lg"
+            className="ml-1 mt-4 underline bg-yellow-300/70 p-2 rounded-lg"
           >
             SAVE
-          </button>
+          </a>
         </div>
       </div>
-      <div className="flex justify-center items-center flex-col">
-        <div className="w-[270px]">
+      <div className="flex justify-top flex-col">
+        <div className="flex flex-col w-[270px] items-center justify-center">
           <h1 className="text-3xl text-center">Save Section</h1>
           <h1 className="text-center text-sm">
-            Here you can save the actual link and qr-code to use it latter.
+            Here you have all your current saved codes.
           </h1>
+          <a>
+            <Image
+              src={"/angle-down-solid.svg"}
+              alt="arrow down"
+              width={40}
+              height={40}
+            />
+          </a>
         </div>
-        <div>
-          {links.map((links) => (
-            <React.Fragment key={links.id}>
-              <div className="col-11">
-                <span
-                  className=" form-control bg-white btn mt-2 text-black rounded-sm"
-                  style={{ textAlign: "left", fontWeight: "bold" }}
-                >
-                  {links.title}
-                </span>
-                <QRCode value={links.title} size={50}/>
-              </div>
-              <div className="col-1">
-                <button className="mt-2 btn btn-warning "
-                onClick={()=> handleDelete(links)}>DELETE</button>
-              </div>
-            </React.Fragment>
-          ))}
+        <div className="h-full max-h-screen overflow-y-auto flex flex-col flex-grow">
+          <div className="overflow-y-auto max-h-screen">
+            {links.map((links) => (
+              <React.Fragment key={links.id}>
+                <div className="mt-1 text-black w-[270px] gap-2">
+                  <Accordion
+                    className="flex flex-row bg-white rounded-lg items-center justify-center p-4 min-w-fit"
+                    type="single"
+                    collapsible
+                  >
+                    <AccordionItem value="item-1">
+                      <AccordionTrigger className="bg-slate-300/30 rounded-sm px-1">
+                        {links.title}
+                      </AccordionTrigger>
+                      <AccordionContent>
+                        <div className="flex flex-col items-center justify-center mt-2">
+                          <QRCode value={links.title} size={100} />
+                          <button
+                            className="mt-2 bg-red-800 rounded-md px-6 text-white"
+                            onClick={() => handleDelete(links)}
+                          >
+                            DELETE
+                          </button>
+                        </div>
+                      </AccordionContent>
+                    </AccordionItem>
+                  </Accordion>
+                </div>
+              </React.Fragment>
+            ))}
+          </div>
         </div>
       </div>
     </div>
