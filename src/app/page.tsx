@@ -7,9 +7,10 @@ export default function Home() {
     <div className="flex flex-col bg-gradient-to-t from-[#1b163b] to-[#8d89b9] bg-cover min-h-screen">
       <NavBar></NavBar>
       <div className="flex bg-black/0 h-[600px] mt-40 text-white justify-center flex-row pb-10 px-40">
-        <div className="bg-black/80 rounded-lg w-[1000px] grid grid-cols-2 divide-x">
-          <div className="flex justify-center items-center"><QuickSection></QuickSection></div>
-          <div className="flex justify-center items-center">TBD</div>
+        <div className="bg-black/80 rounded-lg w-[1000px] grid divide-x">
+          <div className="flex justify-center items-center">
+            <QuickSection></QuickSection>
+          </div>
         </div>
       </div>
     </div>
