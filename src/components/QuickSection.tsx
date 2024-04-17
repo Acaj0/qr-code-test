@@ -1,5 +1,5 @@
 "use client";
-import { ChangeEvent, useState } from "react";
+import React, { ChangeEvent, useState } from "react";
 import QRCode from "react-qr-code";
 import QRCodeLink from "qrcode";
 import Image from "next/image";
@@ -13,10 +13,15 @@ export default function QuickSection() {
     if (link) {
       const newLink = { id: new Date().getTime().toString(), title: link };
       setLinks([...links, newLink]);
-      localStorage.setItem("localSaves", JSON.stringify([...links, newLink]));
-      setLinks([]);
+      localStorage.setItem("localLinks", JSON.stringify([...links, newLink]));
     }
   };
+
+  const handleDelete= (link:any)=>{
+    const deleted = links.filter((t)=>t.id !== link.id)
+    setLinks(deleted)
+    localStorage.setItem("localLinks", JSON.stringify(deleted))
+  }
 
   function handleGenerate(link_url: any) {
     QRCodeLink.toDataURL(
@@ -80,12 +85,31 @@ export default function QuickSection() {
           </button>
         </div>
       </div>
-      <div className="flex justify-center items-center">
+      <div className="flex justify-center items-center flex-col">
         <div className="w-[270px]">
           <h1 className="text-3xl text-center">Save Section</h1>
           <h1 className="text-center text-sm">
             Here you can save the actual link and qr-code to use it latter.
           </h1>
+        </div>
+        <div>
+          {links.map((links) => (
+            <React.Fragment key={links.id}>
+              <div className="col-11">
+                <span
+                  className=" form-control bg-white btn mt-2 text-black rounded-sm"
+                  style={{ textAlign: "left", fontWeight: "bold" }}
+                >
+                  {links.title}
+                </span>
+                <QRCode value={links.title} size={50}/>
+              </div>
+              <div className="col-1">
+                <button className="mt-2 btn btn-warning "
+                onClick={()=> handleDelete(links)}>DELETE</button>
+              </div>
+            </React.Fragment>
+          ))}
         </div>
       </div>
     </div>
