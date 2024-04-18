@@ -3,6 +3,9 @@ Ever wondered how those pixelated squares carry so much information? Well, wonde
 
 made by Acaj0
 
+You can test the preview version right now! 
+It is hosted at : https://qr-code-gray-xi.vercel.app
+
 ## UI
 ![image](https://github.com/Acaj0/qr-code-test/assets/118451701/dcbbf27b-8e07-4f76-8332-e4c47574ed40)
 
