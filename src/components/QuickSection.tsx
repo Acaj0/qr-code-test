@@ -9,6 +9,7 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@radix-ui/react-accordion";
+import { ScrollArea } from "@/components/ui/scroll-area";
 
 export default function QuickSection() {
   const [link, setLink] = useState("");
@@ -48,8 +49,8 @@ export default function QuickSection() {
   }
 
   return (
-    <div className="grid grid-cols-2 gap-28">
-      <div className="flex flex-col justify-center items-center text-white">
+    <div className="flex flex-col md:flex-row gap-28 p-3">
+      <div className="flex flex-col justify-center items-center text-white ">
         <div className="w-[270px]">
           <h1 className="text-3xl text-center">QUICK GENERATE</h1>
           <h1 className="text-center text-sm">
@@ -90,9 +91,9 @@ export default function QuickSection() {
           </a>
         </div>
       </div>
-      <div className="flex justify-top flex-col">
+      <div className="flex justify-top flex-col items-center">
         <div className="flex flex-col w-[270px] items-center justify-center">
-          <h1 className="text-3xl text-center">Save Section</h1>
+          <h1 className="text-3xl text-center">SAVE SECTION</h1>
           <h1 className="text-center text-sm">
             Here you have all your current saved codes.
           </h1>
@@ -105,36 +106,38 @@ export default function QuickSection() {
             />
           </a>
         </div>
-        <div className="h-full max-h-screen overflow-y-auto flex flex-col flex-grow">
-          <div className="overflow-y-auto max-h-screen">
-            {links.map((links) => (
-              <React.Fragment key={links.id}>
-                <div className="mt-1 text-black w-[270px] gap-2">
-                  <Accordion
-                    className="flex flex-row bg-white rounded-lg items-center justify-center p-4 min-w-fit"
-                    type="single"
-                    collapsible
-                  >
-                    <AccordionItem value="item-1">
-                      <AccordionTrigger className="bg-slate-300/30 rounded-sm px-1">
-                        {links.title}
-                      </AccordionTrigger>
-                      <AccordionContent>
-                        <div className="flex flex-col items-center justify-center mt-2">
-                          <QRCode value={links.title} size={100} />
-                          <button
-                            className="mt-2 bg-red-800 rounded-md px-6 text-white"
-                            onClick={() => handleDelete(links)}
-                          >
-                            DELETE
-                          </button>
-                        </div>
-                      </AccordionContent>
-                    </AccordionItem>
-                  </Accordion>
-                </div>
-              </React.Fragment>
-            ))}
+        <div className="h-full mt-2 max-h-screen overflow-y-auto flex flex-col flex-grow items-center">
+          <div className="overflow-y-auto max-h-screen items-center">
+            <ScrollArea className="h-[330px] w-[300px] rounded-md border p-4">
+              {links.map((links) => (
+                <React.Fragment key={links.id}>
+                  <div className="mt-1 text-black w-[266px] gap-2">
+                    <Accordion
+                      className="flex flex-row bg-white rounded-lg items-center justify-center p-4 min-w-fit"
+                      type="single"
+                      collapsible
+                    >
+                      <AccordionItem value="item-1">
+                        <AccordionTrigger className="bg-slate-300/30 rounded-sm px-1">
+                          {links.title}
+                        </AccordionTrigger>
+                        <AccordionContent>
+                          <div className="flex flex-col items-center justify-center mt-2">
+                            <QRCode value={links.title} size={100} />
+                            <button
+                              className="mt-2 bg-red-800 rounded-md px-6 text-white"
+                              onClick={() => handleDelete(links)}
+                            >
+                              DELETE
+                            </button>
+                          </div>
+                        </AccordionContent>
+                      </AccordionItem>
+                    </Accordion>
+                  </div>
+                </React.Fragment>
+              ))}
+            </ScrollArea>
           </div>
         </div>
       </div>
