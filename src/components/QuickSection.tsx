@@ -74,18 +74,17 @@ export default function QuickSection() {
           value={link}
           onChange={(e) => handleQrcode(e)}
         />
-        <div className="p-4">
+        <div className="p-4 text-black">
           <a
             href={qrcodeLink}
             download={"qrcode.png"}
-            className="mt-4 underline bg-indigo-700/70 p-2 rounded-lg"
+            className="mt-4 bg-[#FEC85D] p-2 rounded-lg"
           >
-            {" "}
-            DOWNLOAD{" "}
+            DOWNLOAD
           </a>
           <a
             onClick={saveQr}
-            className="ml-1 mt-4 underline bg-yellow-300/70 p-2 rounded-lg"
+            className="ml-1 mt-4 bg-[#FDF0D5] p-2 rounded-lg"
           >
             SAVE
           </a>
@@ -113,7 +112,7 @@ export default function QuickSection() {
                 <React.Fragment key={links.id}>
                   <div className="mt-1 text-black w-[266px] gap-2">
                     <Accordion
-                      className="flex flex-row bg-white rounded-lg items-center justify-center p-4 min-w-fit"
+                      className="flex flex-row bg-[#FDF0D5] rounded-lg items-center justify-center p-4 min-w-fit"
                       type="single"
                       collapsible
                     >
@@ -125,7 +124,7 @@ export default function QuickSection() {
                           <div className="flex flex-col items-center justify-center mt-2">
                             <QRCode value={links.title} size={100} />
                             <button
-                              className="mt-2 bg-red-800 rounded-md px-6 text-white"
+                              className="mt-2 bg-[#780000] rounded-md px-6 text-white"
                               onClick={() => handleDelete(links)}
                             >
                               DELETE
