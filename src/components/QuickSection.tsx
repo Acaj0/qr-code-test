@@ -84,7 +84,7 @@ export default function QuickSection() {
           </a>
           <a
             onClick={saveQr}
-            className="ml-1 mt-4 bg-[#FDF0D5] p-2 rounded-lg"
+            className="ml-1 mt-4 bg-white p-2 rounded-lg"
           >
             SAVE
           </a>
@@ -112,12 +112,12 @@ export default function QuickSection() {
                 <React.Fragment key={links.id}>
                   <div className="mt-1 text-black w-[266px] gap-2">
                     <Accordion
-                      className="flex flex-row bg-[#FDF0D5] rounded-lg items-center justify-center p-4 min-w-fit"
+                      className="flex flex-row bg-white rounded-lg items-center justify-center p-4 min-w-fit"
                       type="single"
                       collapsible
                     >
                       <AccordionItem value="item-1">
-                        <AccordionTrigger className="bg-slate-300/30 rounded-sm px-1">
+                        <AccordionTrigger className="rounded-sm px-1">
                           {links.title}
                         </AccordionTrigger>
                         <AccordionContent>
