@@ -31,10 +31,10 @@ export default function NavBar() {
                 Ever wondered how those pixelated squares carry so much
                 information? Well, wonder no more. Our site turns your text,
                 URL, or contact information into a QR code instantly. Whether
-                you're sharing a website link, a Wi-Fi password, or just want to
+                you are sharing a website link, a Wi-Fi password, or just want to
                 get creative, our generator makes it easy. Simply input your
                 data, and voilà, you can download or save it for later – your
-                personalized QR code is ready to be scanned and shared. It's
+                personalized QR code is ready to be scanned and shared. Its
                 fast, free, and super convenient. Try it out and see how QR
                 codes can simplify your life! 
               </DrawerDescription>
