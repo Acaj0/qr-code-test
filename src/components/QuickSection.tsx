@@ -1,5 +1,5 @@
 "use client";
-import React, { ChangeEvent, useState } from "react";
+import React, { AnchorHTMLAttributes, ChangeEvent, useState } from "react";
 import QRCode from "react-qr-code";
 import QRCodeLink from "qrcode";
 import Image from "next/image";
@@ -14,9 +14,9 @@ import { ScrollArea } from "@/components/ui/scroll-area";
 export default function QuickSection() {
   const [link, setLink] = useState("");
   const [qrcodeLink, setQrcodeLink] = useState("");
-  const [links, setLinks] = useState<any[]>([]);
+  const [links, setLinks] = useState<{ id: string; title: string }[]>([]);
 
-  const saveQr = (e: any) => {
+  const saveQr = (e: React.MouseEvent<HTMLAnchorElement, MouseEvent> | undefined) => {
     if (link) {
       const newLink = { id: new Date().getTime().toString(), title: link };
       setLinks([...links, newLink]);
@@ -30,7 +30,7 @@ export default function QuickSection() {
     localStorage.setItem("localLinks", JSON.stringify(deleted));
   };
 
-  function handleGenerate(link_url: any) {
+  function handleGenerate(link_url: string) {
     QRCodeLink.toDataURL(
       link_url,
       {
@@ -43,7 +43,7 @@ export default function QuickSection() {
     );
   }
 
-  function handleQrcode(e: any) {
+  function handleQrcode(e: React.ChangeEvent<HTMLInputElement>) {
     setLink(e.target.value);
     handleGenerate(e.target.value);
   }
@@ -83,7 +83,7 @@ export default function QuickSection() {
             DOWNLOAD
           </a>
           <a
-            onClick={saveQr}
+            onClick={(e) => saveQr(e)}
             className="ml-1 mt-4 bg-white p-2 rounded-lg"
           >
             SAVE
