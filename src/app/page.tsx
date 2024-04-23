@@ -1,6 +1,7 @@
 import Image from "next/image";
 import NavBar from "@/components/NavBar";
 import QuickSection from "@/components/QuickSection";
+import { SpeedInsights } from "@vercel/speed-insights/next"
 
 export default function Home() {
   return (
@@ -10,9 +11,11 @@ export default function Home() {
         <div className="bg-black/80 rounded-lg md:w-[1000px] grid divide-x">
           <div className="flex justify-center items-center">
             <QuickSection></QuickSection>
+          
           </div>
         </div>
       </div>
+      <SpeedInsights></SpeedInsights>
     </div>
   );
 }
