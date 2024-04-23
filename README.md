@@ -7,5 +7,6 @@ You can test the preview version right now!
 It is hosted at : https://qr-code-gray-xi.vercel.app
 
 ## UI
-![image](https://github.com/Acaj0/qr-code-test/assets/118451701/dcbbf27b-8e07-4f76-8332-e4c47574ed40)
+![1](https://github.com/Acaj0/qr-code-test/assets/118451701/c47eed09-f905-4e6e-93e5-d334e318c06e)
+
 
