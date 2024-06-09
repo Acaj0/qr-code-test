@@ -1,4 +1,3 @@
-import Image from "next/image";
 import NavBar from "@/components/NavBar";
 import QuickSection from "@/components/QuickSection";
 import { SpeedInsights } from "@vercel/speed-insights/next"
